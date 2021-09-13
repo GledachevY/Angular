@@ -1,0 +1,25 @@
+<app-welcome-text *ngIf="!user"></app-welcome-text>
+<div class="container">
+    <!-- theme content  -->
+    <div class="theme-content">
+        <!-- theme-title  -->
+        <div class="theme-title">
+            <div class="theme-name-wrapper">
+                <div class="theme-name">
+                    <h2>{{ theme.themeName }}</h2>
+                    <p>Date: <time>{{ theme.created_at | date }}</time></p>
+                </div>
+                <div class="subscribers">
+                    <p>Subscribers: <span>{{ theme.subscribers.length }}</span></p>
+                    <!-- <button class="subscribe">Subscribe</button>
+                    <button class="unsubscribe">Unsubscribe</button> -->
+                </div>
+            </div>
+        </div>
+        <app-comment
+        *ngFor="let Post of theme.posts"
+        [post]="Post"
+        ></app-comment> 
+        <app-answer *ngIf="user"></app-answer>       
+    </div>
+</div>

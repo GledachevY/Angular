@@ -1,0 +1,117 @@
+<!-- homepage -->
+<div class="container">
+    <form 
+    class="register" 
+    #registerForm="ngForm"
+    (ngSubmit)="onSubmit(registerForm)"
+    >
+        <fieldset>
+            <h2>Registration Form</h2>
+
+            <!-- username -->
+            <p class="field field-icon">
+                <label for="username"><span><i class="fas fa-user"></i></span></label>
+                <input
+                 class="input-error" 
+                 type="text" 
+                 name="username" 
+                 ngModel
+                 required
+                 #username="ngModel"
+                 [ngModel]="'yavor1'"
+                 >
+            </p>
+            <p *ngIf="username.errors?.required && username.touched" class="error">
+                Username is required!
+            </p>
+
+            <!-- email -->
+            <p class="field field-icon">
+                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+                <input
+                type="email" 
+                name="email" 
+                id="email" 
+                ngModel
+                email
+                required
+                #email="ngModel"
+                [ngModel]="'yavor1@abv.bg'"
+                 >
+            </p>
+            <p *ngIf="email.errors?.required && email.touched" class="error">
+                Email is required!
+            </p>
+            <p *ngIf="email.errors?.email && email.touched" class="error">
+                Email is not valid!
+            </p>
+
+            <!-- telephone -->
+            <p class="field field-icon">
+                <label for="tel"><span><i class="fas fa-phone"></i></span></label>
+                <select
+                 name="select-tel" 
+                 id="select-tel" 
+                 class="tel"
+                 [ngModel]="'+359'"
+                 >
+                    <option value="+359" selected>+359</option>
+                    <option value="+44">+44</option>
+                </select>
+                <input 
+                type="text" 
+                name="tel" 
+                id="tel" 
+                ngModel
+                [ngModel]="'6484848'"
+                >
+            </p>
+
+            <!-- password -->
+            <p class="field field-icon">
+                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                ngModel
+                required
+                minlength="4"
+                #password="ngModel"
+                [ngModel]="'123123'"
+                >
+            </p>
+            <p *ngIf="password.errors?.required && password.touched" class="error">
+                Password is required!
+            </p>
+            <p *ngIf="password.errors?.minlength && password.touched" class="error">
+                Password must be at least 4 characters!
+            </p>
+
+            <!-- rePassword -->
+            <p class="field field-icon">
+                <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
+                <input 
+                type="password" 
+                name="rePassword" 
+                id="rePassword" 
+                ngModel
+                #rePassword="ngModel"
+                required
+                [ngModel]="'123123'"
+                >
+            </p>
+            <p *ngIf="password.value!==rePassword.value"
+             class="error"
+             >Repeat Password does not match password!</p>
+
+            <button type="submit">Create Account</button>
+
+            <p class="text-center">
+                Have an account?
+                <a >Log In</a>
+            </p>
+
+        </fieldset>
+    </form>
+</div>

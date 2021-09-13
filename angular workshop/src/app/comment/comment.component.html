@@ -1,0 +1,21 @@
+<!-- comment  -->
+<div class="comment">
+    <header class="header">
+        <p><span>{{ post?.userId.username }}</span> posted on <time>{{ post?.created_at | date }}</time></p>
+    </header>
+    <div class="comment-main">
+        <div class="userdetails">
+            <img src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg" alt="avatar">
+        </div>
+        <div class="post-content">
+            <p>{{ post?.text }}</p>
+        </div>
+    </div>
+    <div class="footer">
+        <ng-container *ngIf="user">
+            <i (click)="onLiked()" class="fas fa-thumbs-up"></i>
+            <i (click)="onDisliked()" class="fas fa-thumbs-down"></i>
+        </ng-container>
+        <p><span>{{post?.likes.length}}</span> likes</p>
+    </div>
+</div>

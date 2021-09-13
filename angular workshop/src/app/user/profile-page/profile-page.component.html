@@ -1,0 +1,59 @@
+<!-- homepage -->
+<div class="container">
+    <div class="profile">
+        <form
+        #editForm="ngForm"
+        (ngSubmit)="onEdit(editForm)">
+        <img
+            src="https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg"
+            alt="default user">
+        <h3>User Info:</h3>
+        <div class="flex">
+            <p>Username: </p>
+            <p *ngIf="!isEditMode">{{ user.username }}</p>
+            <input
+            *ngIf="isEditMode"
+            ngModel
+            type="text"
+            name="username"
+            #username="ngModel"
+            [ngModel]="user.username"
+            required
+            minlength="5"
+            >
+        </div>
+        <div class="flex">
+            <p>Email: </p>
+            <p *ngIf="!isEditMode">{{ user.email }}</p>
+            <input
+            *ngIf="isEditMode"
+            ngModel
+            type="text"
+            name="email"
+            #email="ngModel"
+            [ngModel]="user.email"
+            required
+            email
+            >
+        </div>
+        <div class="flex">
+            <p>Phone: </p>
+            <p *ngIf="!isEditMode">{{ user.tel }}</p>
+            <input
+            *ngIf="isEditMode"
+            ngModel
+            type="text"
+            name="tel"
+            #tel="ngModel"
+            [ngModel]="user.tel"
+            >
+        </div>
+            <button (click)="onChangeMode()" *ngIf="!isEditMode" class="edit-button">Edit</button>
+            <ng-container *ngIf="isEditMode">
+                <button (click)="onChangeMode()" class="btn btn-danger btn-toolbar">Cancel</button>
+                <button class="invisible"></button>
+                <button class="btn btn-success btn-toolbar">Save</button>
+            </ng-container>
+    </form>
+    </div>
+</div>

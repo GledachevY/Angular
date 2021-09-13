@@ -1,0 +1,21 @@
+<div class="container">
+    <main>
+        <div class="theme-title">
+
+            <ng-container *ngIf="themes">
+                <app-theme *ngFor="let theme of themes| sortBySubscribers: 'subscribers'; let i = index"
+                    [theme]="theme"></app-theme>
+            </ng-container>
+        </div>
+    </main>
+    <aside>
+        <div class="aside">
+            <h2 class="title">
+                Recent posts
+            </h2>
+            <div>
+                <app-last-posts *ngFor="let post of lastPosts; let i = index" [post]="post"></app-last-posts>
+            </div>
+        </div>
+    </aside>
+</div>

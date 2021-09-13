@@ -1,0 +1,59 @@
+<!-- homepage -->
+<div class="container">
+    <form 
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="login" 
+    >
+
+        <fieldset>
+            <h2>Login Form</h2>
+
+            <p class="field field-icon">
+                <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+                <input 
+                type="email"  
+                id="email" 
+                formControlName="email"
+                [ngClass]="{
+                'input-error': loginForm.controls.email.touched 
+                && loginForm.controls.email.errors?.required
+                ||loginForm.controls.email.errors?.email}"
+                >
+            </p>
+            <p *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required" class="error">
+                Email is required!
+            </p>
+            <p *ngIf="loginForm.controls.email.errors?.email && loginForm.controls.email.touched" class="error">
+                Email is not valid!
+            </p>
+
+            <p class="field field-icon">
+                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                <input 
+                type="password" 
+                id="password" 
+                formControlName="password"
+                [ngClass]="{
+                    'input-error': loginForm.controls.password.touched 
+                    && loginForm.controls.password.errors?.required
+                    || loginForm.controls.password.errors?.minlength}"
+                >
+            </p>
+            <p *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched" class="error">
+                Password is required!
+            </p>
+            <p *ngIf="loginForm.controls.password.errors?.minlength && loginForm.controls.password.touched" class="error">
+                Password must be at least 5 characters!
+            </p>
+
+            <button type="submit">Login</button>
+
+            <p class="text-center">
+                Have an account?
+                <a>Register</a>
+            </p>
+
+        </fieldset>
+    </form>
+</div>
