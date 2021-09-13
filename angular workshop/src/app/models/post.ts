@@ -6,7 +6,7 @@ export class Post {
         public created_at: Date,
         public likes: number[],
         public text: string,
-        public themeId: string,
+        public themeId: any,
         public update_at: Date,
         public userId: User,
         public _id: string

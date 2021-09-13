@@ -24,6 +24,7 @@ import { UserService } from './services/user.service';
 import { ThemesService } from './services/themes.service';
 import { CookieService } from 'ngx-cookie-service';
 import { GetDaysPipe } from './pipes/get-days.pipe';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GetDaysPipe } from './pipes/get-days.pipe';
     WelcomeTextComponent,
     NewThemeComponent,
     NotFoundComponent,
-    GetDaysPipe
+    GetDaysPipe,
+    CustomDatePipe
   ],
   imports: [
     BrowserModule,
